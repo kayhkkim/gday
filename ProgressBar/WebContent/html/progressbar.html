@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Fluid ProgressBar - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="/ProgressBar/css/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/ProgressBar/css/icon.css">
+	<link rel="stylesheet" type="text/css" href="/ProgressBar/css/demo.css">
+	<script type="text/javascript" src="/ProgressBar/jquery.min.js"></script>
+	<script type="text/javascript" src="/ProgressBar/jquery.easyui.min.js"></script>
+</head>
+<body style="text-align:center; width:90%">
+	<h2>Progress Bars Demo</h2>
+	<div style="margin:20px;"></div>
+	<div id="p1" class="easyui-progressbar" data-options="value:25" style="width:90%;height:50px"></div>
+	<div style="margin:20px;"></div>
+	<div id="p2" class="easyui-progressbar" data-options="value:50" style="width:90%;height:50px"></div>
+	<div style="margin:20px;"></div>
+	<div id="p3" class="easyui-progressbar" data-options="value:75" style="width:90%;height:50px"></div>
+	<div style="margin:20px;"></div>
+    <div style="margin:20px;width:90%">
+        <select id="select-pid" class="s-btn-plain-active">
+            <option value="#p1" selected="selected">#progress1</option>
+            <option value="#p2">#progress2</option>
+            <option value="#p3">#progress3</option>
+        </select>&nbsp;&nbsp;
+        <a href="#" class="easyui-linkbutton" onclick="calculate(-25)">-25</a>&nbsp;&nbsp;
+        <a href="#" class="easyui-linkbutton" onclick="calculate(-10)">-10</a>&nbsp;&nbsp;
+        <a href="#" class="easyui-linkbutton" onclick="calculate(10)">+10</a>&nbsp;&nbsp;
+        <a href="#" class="easyui-linkbutton" onclick="calculate(25)">+25</a>&nbsp;&nbsp;
+    </div>
+    <script>
+        function calculate(number){
+            var progressbar_id = $("#select-pid").val();
+            var value = $(progressbar_id).progressbar("getValue");
+            value += number;
+          	$(progressbar_id).progressbar("setValue", value);
+          	if (value >= 100) {
+          		$(progressbar_id).find(".progressbar-value .progressbar-text").css({"background-color": "red" });
+          	} else {
+          		$(progressbar_id).find(".progressbar-value .progressbar-text").css({"background-color": "#CCE6FF" });
+          	}
+        };
+   </script>
+</body>
+</html>
